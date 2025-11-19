@@ -5,7 +5,7 @@ import { SHOP_ROUTE } from '../utils/consts';
 import { Context } from '../main';
 
 const AppRouter = () => {
-  const {user} = useContext(Context)!;
+  const {user} = useContext(Context)!; // Убрать ! когда пойдут данные с бэка
 
   console.log(user);
   return (
