@@ -33,18 +33,8 @@ export default class DeviceStore {
   _selectedBrand: IBrand;
   
   constructor() {
-    this._types =[
-      {id: 1, name: 'Холодильники'},
-      {id: 2, name: 'Смартфоны'},
-      {id: 3, name: 'Ноутбуки'},
-      {id: 4, name: 'Телевизоры'},
-    ];
-    this._brands = [
-      {id: 1, name: 'Samsung'},
-      {id: 2, name: 'Apple'},
-      {id: 3, name: 'Lenovo'},
-      {id: 4, name: 'Asus'},
-    ];
+    this._types =[];
+    this._brands = [];
     this._devices = [
       {id: 1, name: 'Iphone 11', price: 25000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+11'},
       {id: 2, name: 'Iphone 12', price: 26000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+12'},
@@ -53,7 +43,7 @@ export default class DeviceStore {
       {id: 5, name: 'Iphone 14', price: 28000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+14'},
       {id: 6, name: 'Iphone 14', price: 28000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+14'},
       {id: 7, name: 'Iphone 14', price: 28000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+14'},
-      {id: 8, name: 'Iphone 14', price: 28000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+14'},
+      
     ];
     this._selectedType = {id: 0, name: 'change'};
     this._selectedBrand = {id: 0, name: 'change'};
