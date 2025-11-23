@@ -3,8 +3,9 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 import { authRoutes, publicRoutes } from '../routes';
 import { SHOP_ROUTE } from '../utils/consts';
 import { Context } from '../main';
+import { observer } from 'mobx-react-lite';
 
-const AppRouter = () => {
+const AppRouter = observer(() => {
   const {user} = useContext(Context)!; // Убрать ! когда пойдут данные с бэка
 
   console.log(user);
@@ -19,6 +20,6 @@ const AppRouter = () => {
       <Redirect to = {SHOP_ROUTE}/>
     </Switch>
   )
-}
+})
 
 export default AppRouter

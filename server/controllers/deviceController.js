@@ -24,7 +24,6 @@ class DeviceController {
         });
       }
 
-
       return res.json(device);
     } catch (e) {
       next(ApiError.badRequest(e.message));
