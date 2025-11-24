@@ -61,3 +61,19 @@ export const fetchOneDevice = async (id: number): Promise<IDevice> => {
   const { data } = await $host.get<IDevice>('api/device/' + id);
   return data;
 };
+
+export const deleteType = async (id: number): Promise<{ message: string }> => {
+  const { data } = await $authHost.delete<{ message: string }>('api/type/' + id);
+  return data;
+};
+
+export const deleteBrand = async (id: number): Promise<{ message: string }> => {
+  const { data } = await $authHost.delete<{ message: string }>('api/brand/' + id);
+  return data;
+};
+
+export const deleteDevice = async (id: number): Promise<{ message: string }> => {
+  const { data } = await $authHost.delete<{ message: string }>('api/device/' + id);
+  return data;
+};
+
