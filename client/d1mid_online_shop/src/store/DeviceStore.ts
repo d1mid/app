@@ -23,14 +23,16 @@ export interface IDevice {
   rating: number;
   img: string;
   info: IDeviceInfo[];
+  brandId?: number;
+  typeId?: number;
 }
 
 export default class DeviceStore {
   _types: IType[];
   _brands: IBrand[];
   _devices: IDevice[];
- _selectedType: IType | undefined;
-_selectedBrand: IBrand | undefined;
+  _selectedType: IType | undefined;
+  _selectedBrand: IBrand | undefined;
   _page: number;
   _totalCount: number;
   _limit: number;
@@ -43,7 +45,7 @@ _selectedBrand: IBrand | undefined;
     this._selectedBrand = undefined;
     this._page = 1;
     this._totalCount = 0;
-    this._limit = 3;
+    this._limit = 4;
     makeAutoObservable(this);
   }
 

@@ -1,0 +1,79 @@
+.cardCol {
+  margin-top: 16px;
+  min-width: 164px;
+}
+
+.card {
+  width: 164px;
+  cursor: pointer;
+  border: 2px solid #3399cc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #c8d1e669;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: box-shadow 0.18s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px #3399cc46;
+  border-color: #2070a0;
+}
+
+.image {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  background: #e9ecef;
+  border-bottom: 1px solid #f6c35c;
+}
+
+.infoRow {
+  color: #888;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 6px;
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ratingWrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ratingValue {
+  font-weight: 600;
+  color: #f6c35c;
+  font-size: 16px;
+}
+
+.starImg {
+  width: 18px;
+  height: 18px;
+}
+
+.deviceName {
+  font-size: 17px;
+  color: #222;
+  margin: 3px 0 8px 0;
+  font-weight: 600;
+  width: 92%;
+  text-align: left;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

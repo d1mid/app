@@ -16,7 +16,7 @@ const NavBar = observer(() => {
   }
 
   return (
-     <Navbar bg="dark" data-bs-theme="dark">
+     <Navbar bg="dark" data-bs-theme="dark" className='mb-3'>
         <Container>
           <NavLink style={{color: "white"}} to = {SHOP_ROUTE}>d1mid Shop</NavLink>
           {user.isAuth ?
