@@ -17,7 +17,7 @@ const BrandBar = observer(() => {
         >
           <Card 
           className="p-3 align-items-center"
-          border = {brand.id === device.selectedBrand.id ? 'success' : 'info'}
+          border = {brand.id === device.selectedBrand?.id ? 'success' : 'info'}
           >
             {brand.name}
           </Card>

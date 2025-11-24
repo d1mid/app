@@ -1,22 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import {Image} from 'react-bootstrap'
 import bigStar from '../assets/bigStar.png'
+import { useParams } from 'react-router'
+import type { IDevice } from '../store/DeviceStore'
+import { fetchOneDevice } from '../http/deviceApi'
 
 const DevicePage = () => {
-  const device = {id: 1, name: 'Iphone 11', price: 25000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+11'};
-  const description = [
-    {id: 1, tittle: 'Оперативная память', description: '5 гб'},
-    {id: 2, tittle: 'Камера', description: '12 мп'},
-    {id: 3, tittle: 'Процессор', description: 'A17'},
-    {id: 4, tittle: 'Количество ядер', description: '4'},
-    {id: 5, tittle: 'Аккумулятор', description: '4800 mAh'},
-  ];
+const [device, setDevice] = useState<IDevice>({
+  id: 0,
+  name: '',
+  price: 0,
+  rating: 0,
+  img: '',
+  info: [],
+});
+
+  const {id} = useParams<{ id: string }>();
+
+
+  useEffect(() => {
+    fetchOneDevice(Number(id)).then(data => setDevice(data))
+  }, [])
+ 
   return (
     <Container className='mt-3'>
       <Row>
           <Col md = {4}>
-            <Image width={300} height={300} src={device.img}/>
+            <Image width={300} height={300} src={import.meta.env.VITE_API_URL + device.img}/>
           </Col>
           <Col md = {4}>
             <Row className='d-flex flex-column align-items-center'>
@@ -41,9 +52,9 @@ const DevicePage = () => {
       </Row>
       <Row className='d-flex flex-column m-3'>
           <h1>Характеристики:</h1>
-          {description.map((info, index) =>
+          {device.info.map((info, index) =>
             <Row key={info.id} style={{background: index % 2 === 0 ? 'lightgray' : 'transparent', padding: 10}}> 
-              {info.tittle}: {info.description}
+              {info.title}: {info.description}
             </Row>
           )}
       </Row>

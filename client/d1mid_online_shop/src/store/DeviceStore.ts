@@ -12,7 +12,7 @@ export interface IBrand {
 
 export interface IDeviceInfo {
   id: number;
-  tittle: string;
+  title: string;
   description: string;
 }
 
@@ -22,31 +22,28 @@ export interface IDevice {
   price: number;
   rating: number;
   img: string;
-  // info: IDeviceInfo[];
+  info: IDeviceInfo[];
 }
 
 export default class DeviceStore {
   _types: IType[];
   _brands: IBrand[];
   _devices: IDevice[];
-  _selectedType: IType;
-  _selectedBrand: IBrand;
+ _selectedType: IType | undefined;
+_selectedBrand: IBrand | undefined;
+  _page: number;
+  _totalCount: number;
+  _limit: number;
   
   constructor() {
     this._types =[];
     this._brands = [];
-    this._devices = [
-      {id: 1, name: 'Iphone 11', price: 25000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+11'},
-      {id: 2, name: 'Iphone 12', price: 26000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+12'},
-      {id: 3, name: 'Iphone 13', price: 27000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+13'},
-      {id: 4, name: 'Iphone 14', price: 28000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+14'},
-      {id: 5, name: 'Iphone 14', price: 28000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+14'},
-      {id: 6, name: 'Iphone 14', price: 28000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+14'},
-      {id: 7, name: 'Iphone 14', price: 28000, rating: 5, img: 'https://placehold.co/140x150/orange/white?text=iphone+14'},
-      
-    ];
-    this._selectedType = {id: 0, name: 'change'};
-    this._selectedBrand = {id: 0, name: 'change'};
+    this._devices = [];
+    this._selectedType = undefined;
+    this._selectedBrand = undefined;
+    this._page = 1;
+    this._totalCount = 0;
+    this._limit = 3;
     makeAutoObservable(this);
   }
 
@@ -59,11 +56,20 @@ export default class DeviceStore {
    setDevice(devices: IDevice[]) {
     this._devices = devices;
   }
-  setSelectedType(type: IType) {
+  setSelectedType(type?: IType) {
     this._selectedType = type;
   }
-  setSelectedBrand(brand: IBrand) {
+  setSelectedBrand(brand?: IBrand) {
     this._selectedBrand = brand;
+  }
+  setPage(page: number) {
+    this._page = page;
+  }
+  setTotalCount(totalCount: number) {
+    this._totalCount = totalCount;
+  }
+  setLimit(limit: number) {
+    this._limit = limit;
   }
 
 
@@ -81,5 +87,14 @@ export default class DeviceStore {
   }
   get selectedBrand() {
     return this._selectedBrand;
+  }
+   get page() {
+    return this._page;
+  }
+   get totalCount() {
+    return this._totalCount;
+  }
+   get limit() {
+    return this._limit;
   }
 }
