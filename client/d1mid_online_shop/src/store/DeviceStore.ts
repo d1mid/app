@@ -57,6 +57,7 @@ _selectedBrand: IBrand | undefined;
     this._devices = devices;
   }
   setSelectedType(type?: IType) {
+    this.setPage(1);
     this._selectedType = type;
   }
   setSelectedBrand(brand?: IBrand) {
