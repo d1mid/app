@@ -6,7 +6,7 @@ import { Context } from '../main';
 import { observer } from 'mobx-react-lite';
 
 const AppRouter = observer(() => {
-  const {user} = useContext(Context)!; // Убрать ! когда пойдут данные с бэка
+  const {user} = useContext(Context)!; 
 
   console.log(user);
   return (

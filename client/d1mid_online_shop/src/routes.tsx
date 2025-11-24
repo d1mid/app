@@ -4,7 +4,7 @@ import Admin from "./pages/Admin";
 import Shop from "./pages/Shop";
 import Auth from "./pages/Auth";
 import DevicePage from "./pages/DevicePage";
-import Basket from "./pages/Basket";
+import BasketPage from './pages/BasketPage';
 
 
 type RouteConfig = {
@@ -19,8 +19,9 @@ export const authRoutes: RouteConfig[] = [
   },
   {
     path: BASKET_ROUTE,
-    Component: Basket,
+    Component: BasketPage,
   },
+  
 ];
 
 export const publicRoutes : RouteConfig[] = [

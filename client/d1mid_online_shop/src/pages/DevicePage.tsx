@@ -1,20 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Card, Col, Container, Row, Image, Table } from 'react-bootstrap'
-import bigStar from '../assets/bigStar.png'
-import { useParams } from 'react-router'
-import type { IDevice } from '../store/DeviceStore'
-import { fetchOneDevice } from '../http/deviceApi'
-import styles from './DevicePage.module.css'
+import React, { useEffect, useState } from 'react';
+import { Button, Card, Col, Container, Row, Image, Table } from 'react-bootstrap';
+import bigStar from '../assets/bigStar.png';
+import { useParams } from 'react-router';
+import type { IDevice } from '../store/DeviceStore';
+import { fetchOneDevice } from '../http/deviceApi';
+import { addToBasket } from '../http/BasketApi';
+import styles from './DevicePage.module.css';
 
 const DevicePage = () => {
   const [device, setDevice] = useState<IDevice>({
     id: 0, name: '', price: 0, rating: 0, img: '', info: [],
-  })
-  const { id } = useParams<{ id: string }>()
+  });
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    fetchOneDevice(Number(id)).then(data => setDevice(data))
-  }, [])
+    if (id) {
+      fetchOneDevice(Number(id)).then(data => setDevice(data));
+    }
+  }, [id]);
+
+  const handleAddToBasket = async () => {
+    if (!device.id) return;
+    try {
+      await addToBasket(device.id);
+      alert('Товар добавлен в корзину');
+    } catch (e) {
+      alert(e);
+    }
+  };
 
   return (
     <Container className={styles.wrapper}>
@@ -31,7 +44,7 @@ const DevicePage = () => {
               <img
                 src={bigStar}
                 alt="Рейтинг"
-                style={{width: 24, height: 24, marginRight: 4}}
+                style={{ width: 24, height: 24, marginRight: 4 }}
               />
               {device.rating}
             </div>
@@ -43,7 +56,11 @@ const DevicePage = () => {
               <span className={styles.priceLabel}>Цена</span>
               <h1 className={styles.price}>{device.price} ₽</h1>
             </div>
-            <Button className={styles.cartButton}>
+            <Button
+              className={styles.cartButton}
+              onClick={handleAddToBasket}
+              disabled={!device.id}
+            >
               В корзину
             </Button>
             <div className={styles.featuresSection}>
@@ -66,8 +83,7 @@ const DevicePage = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default DevicePage
-
+export default DevicePage;
